@@ -1,0 +1,12 @@
+{
+  // 拡張子でソートする
+  "explorer.sortOrder": "type",
+  // フォーマッターの設定
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  // 勉強のためGithubCopilotはOFFにする
+  "github.copilot.editor.enableAutoCompletions": false
+}
