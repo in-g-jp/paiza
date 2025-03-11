@@ -15,3 +15,19 @@ test:
 		echo "--------------------------------"; \
 		break; \
 	done
+
+commit:
+	@echo ""
+	@CHALLENGE_ID=$$(basename $$(dirname $$(pwd))); \
+	echo "⏱️  実行時間を入力してください（例: 10分30秒）："; \
+	read TIME; \
+	echo ""; \
+	echo "📝 コミットメッセージ: $$CHALLENGE_ID: $$TIME"; 
+	echo ""; \
+	git add .; \
+	git commit -m "$$CHALLENGE_ID: $$TIME"; \
+	echo ""; \
+	echo "🚀 変更をプッシュします..."; \
+	git push; \
+	echo ""; \
+	echo "✅ 完了しました！"
