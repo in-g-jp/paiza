@@ -22,12 +22,11 @@ commit:
 	echo "⏱️  実行時間を入力してください（例: 10分30秒）："; \
 	read TIME; \
 	echo ""; \
-	echo "📝 コミットメッセージ: $$CHALLENGE_ID: $$TIME"; 
+	echo "📝 コミットメッセージ: $$CHALLENGE_ID: $$TIME"; \
 	echo ""; \
-	git add .; \
-	git commit -m "$$CHALLENGE_ID: $$TIME"; \
-	echo ""; \
+	git add . > /dev/null 2>&1; \
+	git commit -m "$$CHALLENGE_ID: $$TIME" > /dev/null 2>&1; \
 	echo "🚀 変更をプッシュします..."; \
-	git push; \
+	git push > /dev/null 2>&1; \
 	echo ""; \
 	echo "✅ 完了しました！"
