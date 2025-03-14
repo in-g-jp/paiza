@@ -4,10 +4,8 @@ $input = intval(fgets(STDIN));
 $data = [];
 //最も連続した日程が更新される場合を入れる配列
 $newData = [];
-$count = 0;
 
 while ($line = intval(fgets(STDIN))) {
-    $count++;
     //data配列が空の場合
     if (empty($data)) {
         array_push($data, $line);
