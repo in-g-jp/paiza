@@ -24,9 +24,25 @@ commit:
 	echo ""; \
 	echo "📝 コミットメッセージ: $$CHALLENGE_ID: $$TIME"; \
 	echo ""; \
+	echo "🔄 mainブランチに切り替えます..."; \
+	git checkout main > /dev/null 2>&1; \
+	echo ""; \
+	echo "⬇️  最新の変更を取得します..."; \
+	git pull > /dev/null 2>&1; \
+	echo ""; \
+	echo "🌱 作業ブランチを作成します: feature/$$CHALLENGE_ID"; \
+	git checkout -b feature/$$CHALLENGE_ID > /dev/null 2>&1; \
+	echo ""; \
 	git add . > /dev/null 2>&1; \
 	git commit -m "$$CHALLENGE_ID: $$TIME" > /dev/null 2>&1; \
 	echo "🚀 変更をプッシュします..."; \
-	git push > /dev/null 2>&1; \
+	git push --set-upstream origin feature/$$CHALLENGE_ID > /dev/null 2>&1; \
+	echo ""; \
+	echo "🔗 PRページを開きます..."; \
+	PR_URL="https://github.com/in-g-jp/paiza/compare/main...feature/$$CHALLENGE_ID?expand=1"; \
+	open "$$PR_URL" 2>/dev/null || xdg-open "$$PR_URL" 2>/dev/null || echo "ブラウザでこのURLを開いてください: $$PR_URL"; \
+	echo ""; \
+	echo "🔄 mainブランチに戻ります..."; \
+	git checkout main > /dev/null 2>&1; \
 	echo ""; \
 	echo "✅ 完了しました！"
