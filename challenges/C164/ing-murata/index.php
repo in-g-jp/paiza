@@ -27,7 +27,7 @@ while ($line = fgets(STDIN)) {
 //昇順にした正解
 $sortedCorrect = sort($correct);
 
-//照準になっていればYes
+//昇順になっていればYes
 if ($correct === $inputs) {
     echo "Yes";
     return;
