@@ -1,2 +1,5 @@
 <?php
-// ここに回答を実装してください
+    $x = fgets(STDIN);
+    $n = fgets(STDIN);
+    echo $x*$n;
+?>
