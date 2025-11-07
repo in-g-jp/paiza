@@ -1,2 +1,6 @@
 <?php
-// ここに回答を実装してください
+    $a = fgets(STDIN);
+    $b = fgets(STDIN);
+    $val = 500-$a-$b;
+    echo $val;
+?>
