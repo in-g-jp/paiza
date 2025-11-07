@@ -1,2 +1,5 @@
 <?php
-// ここに回答を実装してください
+    $x = fgets(STDIN);
+    $y = fgets(STDIN);
+    echo $x*$y*2;
+?>
