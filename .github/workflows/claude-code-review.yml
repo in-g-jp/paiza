@@ -1,0 +1,54 @@
+name: Claude Code Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  claude-review:
+    # Skip renovate and claude PRs
+    if: |
+      github.event.pull_request.user.login != 'renovate[bot]' &&
+      github.event.pull_request.user.login != 'renovate' &&
+      github.event.pull_request.user.login != 'claude[bot]' &&
+      github.event.pull_request.user.login != 'claude'
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: read
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Run Claude Code Review
+        id: claude-review
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+
+          # Optional: Specify model via claude_args (defaults to Claude Sonnet 4)
+          # claude_args: --model claude-opus-4-20250514
+
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ github.event.pull_request.number }}
+
+            このPRをレビューしてください。
+
+            以下の観点で確認し、問題があれば指摘してください：
+            - コードが長くなっても良いので可読性の高いきれいなコードであること
+            - ネストは深くせずアーリーリターンを使うこと
+            - 文字列の連結は文字列の中に変数を埋め込むこと（変数展開）
+            - 変数名は読み手に意図が伝わるか
+
+            問題点・改善点がある場合は、必ず該当する差分行に対してインラインコメント（inline comment）で指摘してください。
+            問題がなければ「LGTM」とだけ回答してください。
+            日本語でレビューしてください。
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*), Bash(gh pr diff:*), Bash(gh pr view:*)"
