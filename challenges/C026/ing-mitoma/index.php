@@ -1,21 +1,22 @@
 <?php
 // ここに回答を実装してください
-$rules = array_map("intval", explode(" ", trim(fgets(STDIN))));
-$N = $rules[0];
-$S = $rules[1];
-$P = $rules[2];
-$SugarAmountMin = $S - $P;
-$SugarAmountMax = $S + $P;
+[$carrotCount, $s, $p] = array_map("intval", explode(" ", trim(fgets(STDIN))));
+$sugarAmountMinimum = $s - $p;
+$sugarAmountMaximum = $s + $p;
 $maxWeight = -1;
 $bestCarrot = "not found";
 
-for ($i = 1; $i <= $N; $i++) {
+for ($i = 1; $i <= $carrotCount; $i++) {
   [$weight, $sugar] = array_map("intval", explode(" ", trim(fgets(STDIN))));
 
-  if ($weight > $maxWeight && $sugar >= $SugarAmountMin && $sugar <= $SugarAmountMax) {
-    $maxWeight = $weight;
-    $bestCarrot = $i;
+  if ($sugar < $sugarAmountMinimum || $sugar > $sugarAmountMaximum) {
+    continue;
   }
+  if ($weight <= $maxWeight) {
+    continue;
+  }
+  $maxWeight = $weight;
+  $bestCarrot = $i;
 }
 
 echo $bestCarrot;
