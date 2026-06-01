@@ -1,9 +1,9 @@
 <?php
 // ここに回答を実装してください
-$rules = array_map("intval", explode(" ", trim(fgets(STDIN))));
-$defaultProductPrice = $rules[0];
-$BudgetpersonA = $rules[1];
-$BudgetpersonB = $rules[2];
+$params = array_map("intval", explode(" ", trim(fgets(STDIN))));
+$defaultProductPrice = $params[0];
+$budgetpersonA = $params[1];
+$budgetpersonB = $params[2];
 $currentTotalPrice = $defaultProductPrice;
 $incrementPersonA = 10;
 $incrementPersonB = 1000;
@@ -11,7 +11,7 @@ $finalPurchaser = "";
 
 while (true) {
   $nextPriceA = $currentTotalPrice + $incrementPersonA;
-  if ($nextPriceA  > $BudgetpersonA) {
+  if ($nextPriceA  > $budgetpersonA) {
     $finalPurchaser = "B";
     break;
   }
@@ -19,7 +19,7 @@ while (true) {
   $currentTotalPrice = $nextPriceA;
 
   $nextPriceB = $currentTotalPrice + $incrementPersonB;
-  if ($nextPriceB > $BudgetpersonB) {
+  if ($nextPriceB > $budgetpersonB) {
     $finalPurchaser = "A";
     break;
   }
@@ -27,4 +27,4 @@ while (true) {
   $currentTotalPrice = $nextPriceB;
 }
 
-echo $finalPurchaser . " " . $currentTotalPrice;
+echo "$finalPurchaser $currentTotalPrice";
