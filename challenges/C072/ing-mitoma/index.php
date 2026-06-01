@@ -6,6 +6,14 @@ $isEvolution = false;
 
 for ($i = 0; $i < $N; $i++) {
   [$evolvedMonsterName, $attackMinimum, $attackMaximum, $defenseMinimum, $defenseMaximum, $agilityMinimum, $agilityMaximum] = explode(" ", trim(fgets(STDIN)));
+  //変数の型をint型に揃えたい
+  $attackMinimum = (int)$attackMinimum;
+  $attackMaximum = (int)$attackMaximum;
+  $defenseMinimum = (int)$defenseMinimum;
+  $defenseMaximum = (int)$defenseMaximum;
+  $agilityMaximum = (int)$agilityMaximum;
+  $agilityMinimum = (int)$agilityMinimum;
+
   if ($attack < $attackMinimum || $attackMaximum < $attack) {
     continue;
   }
