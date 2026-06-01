@@ -1,8 +1,8 @@
 <?php
 // ここに回答を実装してください
-[$carrotCount, $s, $p] = array_map("intval", explode(" ", trim(fgets(STDIN))));
-$sugarAmountMinimum = $s - $p;
-$sugarAmountMaximum = $s + $p;
+[$carrotCount, $targetSugar, $sugarTolerance] = array_map("intval", explode(" ", trim(fgets(STDIN))));
+$sugarAmountMinimum = $targetSugar - $sugarTolerance;
+$sugarAmountMaximum = $targetSugar + $sugarTolerance;
 $maxWeight = -1;
 $bestCarrot = "not found";
 
