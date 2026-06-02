@@ -1,13 +1,10 @@
 <?php
 // ここに回答を実装してください
-$params = array_map("intval", explode(" ", trim(fgets(STDIN))));
-$initialPrice = $params[0];
-$budgetPersonA = $params[1];
-$budgetPersonB = $params[2];
+[$initialPrice, $budgetPersonA, $budgetPersonB] = array_map("intval", explode(" ", trim(fgets(STDIN))));
 $currentTotalPrice = $initialPrice;
 $bidIncrementA = 10;
 $bidIncrementB = 1000;
-$finalPurchaser = "";
+$finalPurchaser = null;
 
 while (true) {
   $nextPriceA = $currentTotalPrice + $bidIncrementA;
