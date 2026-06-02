@@ -1,9 +1,10 @@
 <?php
 // ここに回答を実装してください
-[$initialPrice, $budgetPersonA, $budgetPersonB] = array_map("intval", explode(" ", trim(fgets(STDIN))));
-$currentTotalPrice = $initialPrice;
 const BID_INCREMENT_A = 10;
 const BID_INCREMENT_B = 1000;
+
+[$initialPrice, $budgetPersonA, $budgetPersonB] = array_map("intval", explode(" ", trim(fgets(STDIN))));
+$currentTotalPrice = $initialPrice;
 $finalPurchaser = null;
 
 while (true) {
