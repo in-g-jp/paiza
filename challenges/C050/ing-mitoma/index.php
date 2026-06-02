@@ -1,16 +1,16 @@
 <?php
 // ここに回答を実装してください
 $params = array_map("intval", explode(" ", trim(fgets(STDIN))));
-$defaultProductPrice = $params[0];
+$initialPrice = $params[0];
 $budgetPersonA = $params[1];
 $budgetPersonB = $params[2];
-$currentTotalPrice = $defaultProductPrice;
-$incrementPersonA = 10;
-$incrementPersonB = 1000;
+$currentTotalPrice = $initialPrice;
+$bidIncrementA = 10;
+$bidIncrementB = 1000;
 $finalPurchaser = "";
 
 while (true) {
-  $nextPriceA = $currentTotalPrice + $incrementPersonA;
+  $nextPriceA = $currentTotalPrice + $bidIncrementA;
   if ($nextPriceA > $budgetPersonA) {
     $finalPurchaser = "B";
     break;
@@ -18,7 +18,7 @@ while (true) {
 
   $currentTotalPrice = $nextPriceA;
 
-  $nextPriceB = $currentTotalPrice + $incrementPersonB;
+  $nextPriceB = $currentTotalPrice + $bidIncrementB;
   if ($nextPriceB > $budgetPersonB) {
     $finalPurchaser = "A";
     break;
