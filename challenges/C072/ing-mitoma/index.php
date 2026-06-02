@@ -6,9 +6,9 @@ $evolutionFound = false;
 
 for ($i = 0; $i < $monsterCount; $i++) {
 
-  $evolutionCandidateData = explode(" ", trim(fgets(STDIN)));
-  $evolvedMonsterName = $evolutionCandidateData[0];
-  [$attackMinimum, $attackMaximum, $defenseMinimum, $defenseMaximum, $agilityMinimum, $agilityMaximum] = array_map("intval", array_slice($evolutionCandidateData, 1));
+  $candidateFields = explode(" ", trim(fgets(STDIN)));
+  $evolvedMonsterName = $candidateFields[0];
+  [$attackMinimum, $attackMaximum, $defenseMinimum, $defenseMaximum, $agilityMinimum, $agilityMaximum] = array_map("intval", array_slice($candidateFields, 1));
 
   if ($attack < $attackMinimum || $attackMaximum < $attack) {
     continue;
