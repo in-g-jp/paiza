@@ -2,12 +2,12 @@
 // ここに回答を実装してください
 [$initialPrice, $budgetPersonA, $budgetPersonB] = array_map("intval", explode(" ", trim(fgets(STDIN))));
 $currentTotalPrice = $initialPrice;
-const BIG_INCREMENT_A = 10;
-const BIG_INCREMENT_B = 1000;
+const BID_INCREMENT_A = 10;
+const BID_INCREMENT_B = 1000;
 $finalPurchaser = null;
 
 while (true) {
-  $nextPriceA = $currentTotalPrice + BIG_INCREMENT_A;
+  $nextPriceA = $currentTotalPrice + BID_INCREMENT_A;
   if ($nextPriceA > $budgetPersonA) {
     $finalPurchaser = "B";
     break;
@@ -15,7 +15,7 @@ while (true) {
 
   $currentTotalPrice = $nextPriceA;
 
-  $nextPriceB = $currentTotalPrice + BIG_INCREMENT_B;
+  $nextPriceB = $currentTotalPrice + BID_INCREMENT_B;
   if ($nextPriceB > $budgetPersonB) {
     $finalPurchaser = "A";
     break;
