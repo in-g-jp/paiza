@@ -6,7 +6,7 @@ $sugarAmountMaximum = $targetSugar + $sugarTolerance;
 $maxWeight = -1;
 $bestCarrot = "not found";
 
-for ($i = 1; $i <= $carrotCount; $i++) {
+for ($carrotNumber = 1; $carrotNumber <= $carrotCount; $carrotNumber++) {
   [$weight, $sugar] = array_map("intval", explode(" ", trim(fgets(STDIN))));
 
   if ($sugar < $sugarAmountMinimum || $sugar > $sugarAmountMaximum) {
@@ -16,7 +16,7 @@ for ($i = 1; $i <= $carrotCount; $i++) {
     continue;
   }
   $maxWeight = $weight;
-  $bestCarrot = $i;
+  $bestCarrot = $carrotNumber;
 }
 
 echo $bestCarrot;
