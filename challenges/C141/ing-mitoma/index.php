@@ -1,13 +1,13 @@
 <?php
 // ここに回答を実装してください
-$totalStudentCount = (int)trim(fgets(STDIN));
+$numberOfStudents = (int)trim(fgets(STDIN));
 $voteResults = [];
 
-for ($i = 0; $i < $totalStudentCount; $i++) {
+for ($i = 0; $i < $numberOfStudents; $i++) {
   $voteResults[] = trim(fgets(STDIN));
 }
 
 $voteCounts = array_count_values($voteResults);
-$winningStudent = array_search(max($voteCounts), $voteCounts);
+$nominatedStudent = array_search(max($voteCounts), $voteCounts);
 
-echo $winningStudent;
+echo $nominatedStudent;
