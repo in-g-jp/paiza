@@ -6,6 +6,7 @@ for ($boxNumber = 1; $boxNumber <= $totalBoxCount; $boxNumber++) {
   $boxSizes = array_map("intval", explode(" ", trim(fgets(STDIN))));
   $minimumSizeOfBox = min($boxSizes);
   if ($diameterOfBall > $minimumSizeOfBox) {
+    continue;
   }
   echo "$boxNumber\n";
 }
