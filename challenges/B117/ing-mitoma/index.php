@@ -1,27 +1,27 @@
 <?php
 // ここに回答を実装してください
 $totalCarCount = (int)trim(fgets(STDIN));
-$locationOfCars = [];
+$carQueue = [];
 for ($i = 0; $i < $totalCarCount; $i++) {
-  $locationOfCars[] = (int)trim(fgets(STDIN));
+  $carQueue[] = (int)trim(fgets(STDIN));
 }
-$carMaxNumber = max($locationOfCars);
+$maxCarNumber = max($carQueue);
 $totalLoopCount = 0;
 $nextCarNumber = 1;
 
-while (!empty($locationOfCars)) {
-  $topCarNumber = array_shift($locationOfCars);
+while (!empty($carQueue)) {
+  $frontCarNumber = array_shift($carQueue);
 
-  if ($topCarNumber === $nextCarNumber) {
+  if ($frontCarNumber === $nextCarNumber) {
     $nextCarNumber++;
     continue;
   }
-  if ($topCarNumber === $carMaxNumber) {
+  if ($frontCarNumber === $maxCarNumber) {
     $totalLoopCount++;
-    $locationOfCars[] = $topCarNumber;
+    $carQueue[] = $frontCarNumber;
     continue;
   }
-  $locationOfCars[] = $topCarNumber;
+  $carQueue[] = $frontCarNumber;
 }
 
 echo $totalLoopCount;
