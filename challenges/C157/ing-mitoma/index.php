@@ -5,6 +5,6 @@ $_ = (int)trim(fgets(STDIN));
 $flowerCounts = explode(" ", trim(fgets(STDIN)));
 
 $uniqueFlowerCounts = array_unique($flowerCounts);
-$totalDifferentSeed = count($uniqueFlowerCounts);
+$uniqueSeedCount = count($uniqueFlowerCounts);
 
-echo $totalDifferentSeed;
+echo $uniqueSeedCount;
