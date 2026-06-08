@@ -1,25 +1,20 @@
 <?php
 // ここに回答を実装してください
-[$NumberOfStudents, $gameResults] = array_map('intval', explode(" ", trim(fgets(STDIN))));
+[$numberOfStudents, $gameCounts] = array_map('intval', explode(" ", trim(fgets(STDIN))));
 
-$lengthOfQueues = array_fill(1, $NumberOfStudents, 1);
+$queueLengths = array_fill(1, $numberOfStudents, 1);
 
-for ($i = 0; $i < $gameResults; $i++) {
+for ($i = 0; $i < $gameCounts; $i++) {
   [$winner, $loser] = array_map('intval', explode(" ", trim(fgets(STDIN))));
-  $lengthOfQueues[$winner] += $lengthOfQueues[$loser];
-  $lengthOfQueues[$loser] = 0;
+  $queueLengths[$winner] += $queueLengths[$loser];
+  $queueLengths[$loser] = 0;
 }
 
-arsort($lengthOfQueues);
-$maxLengthValue = max($lengthOfQueues);
-$studentNumberOfMaxLengths = [];
+$maxLength = max($queueLengths);
+$maxLengthStudentNumbers = [];
 
-foreach ($lengthOfQueues as $player => $score) {
-  if ($score === $maxLengthValue) {
-    $studentNumberOfMaxLengths[] = $player;
+foreach ($queueLengths as $studentNumber => $queueLength) {
+  if ($queueLength === $maxLength) {
+    echo "$studentNumber\n";
   }
-}
-
-foreach ($studentNumberOfMaxLengths as $max) {
-  echo $max . PHP_EOL;
 }
